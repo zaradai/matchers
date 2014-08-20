@@ -42,8 +42,8 @@
     </organization>
 
     <scm>
-        <connection>scm:git:git@github.com:zaradai/matchers.git</connection>
-        <url>git@github.com:zaradai/matchers.git</url>
+        <url>https://github.com/zaradai/matchers</url>
+        <connection>scm:git:git://github.com/zaradai/matchers.git</connection>
         <developerConnection>scm:git:git@github.com:zaradai/matchers.git</developerConnection>
     </scm>
 
