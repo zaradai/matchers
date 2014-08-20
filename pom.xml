@@ -58,9 +58,9 @@
         <checkstyle-plugin-version>2.12.1</checkstyle-plugin-version>
         <jacoco-plugin-version>0.7.1.201405082137</jacoco-plugin-version>
         <surefire-plugin-version>2.17</surefire-plugin-version>
-        <findbugs-version>3.0.0</findbugs-version>
-        <javadoc-version>2.9.1</javadoc-version>
-        <source-version>2.3</source-version>
+        <findbugs-plugin-version>3.0.0</findbugs-plugin-version>
+        <javadoc-plugin-version>2.9.1</javadoc-plugin-version>
+        <source-plugin-version>2.3</source-plugin-version>
     </properties>
 
     <dependencies>
@@ -147,7 +147,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs-version}</version>
+                <version>${findbugs-plugin-version}</version>
                 <configuration>
                     <effort>Max</effort>
                     <failOnError>false</failOnError>
@@ -168,7 +168,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc-version}</version>
+                <version>${javadoc-plugin-version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -180,7 +180,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${source-version}</version>
+                <version>${source-plugin-version}</version>
                 <executions>
                     <execution>
                         <goals>
