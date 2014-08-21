@@ -41,6 +41,10 @@
         <url>https://github.com/zaradai</url>
     </organization>
 
+    <issueManagement>
+        <url>https://github.com/zaradai/matchers/issues</url>
+        <system>github</system>
+    </issueManagement>
     <scm>
         <connection>scm:git:git@github.com/zaradai/matchers.git</connection>
         <developerConnection>scm:git:git@github.com:zaradai/matchers.git</developerConnection>
