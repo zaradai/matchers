@@ -4,7 +4,7 @@
 
     <groupId>com.zaradai</groupId>
     <artifactId>matchers</artifactId>
-    <version>0.2--SNAPSHOT</version>
+    <version>0.2-</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Annotation matchers</description>
@@ -47,7 +47,7 @@
         <connection>scm:git:git@github.com/zaradai/matchers.git</connection>
         <developerConnection>scm:git:git@github.com:zaradai/matchers.git</developerConnection>
         <url>https://github.com/zaradai/matchers</url>
-        <tag>HEAD</tag>
+        <tag>matchers-0.2-</tag>
   </scm>
 
     <properties>
