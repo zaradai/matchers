@@ -6,9 +6,9 @@
 
     <groupId>com.zaradai</groupId>
     <artifactId>matchers</artifactId>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
 
-    <name>matchers</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>Annotation matchers</description>
     <packaging>jar</packaging>
     <url>https://github.com/zaradai/matchers</url>
@@ -42,9 +42,9 @@
     </organization>
 
     <scm>
-        <url>https://github.com/zaradai/matchers</url>
-        <connection>scm:git:git://github.com/zaradai/matchers.git</connection>
+        <connection>scm:git:git@github.com/zaradai/matchers.git</connection>
         <developerConnection>scm:git:git@github.com:zaradai/matchers.git</developerConnection>
+        <url>https://github.com/zaradai/matchers</url>
     </scm>
 
     <properties>
@@ -61,6 +61,8 @@
         <findbugs-plugin-version>3.0.0</findbugs-plugin-version>
         <javadoc-plugin-version>2.9.1</javadoc-plugin-version>
         <source-plugin-version>2.3</source-plugin-version>
+        <release-plugin-version>2.5</release-plugin-version>
+        <gpg-plugin-version>1.5</gpg-plugin-version>
     </properties>
 
     <dependencies>
@@ -167,28 +169,78 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>${source-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${release-plugin-version}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <!-- references the profile defined just below -->
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <!-- all plugins below are usually only required for release builds -->
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${source-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${javadoc-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${gpg-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
