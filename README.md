@@ -8,12 +8,12 @@ Hamcrest extended matcher for Annotations
 
 The library is used to help unit testing of annotations.  The range of annotations that can be tested are :-
 
-- [Types - Classes, Interfaces, Enums](#Types)
-- [Constructors](#Constructors)
-- [Fields](#Fields)
+- [Types - Classes, Interfaces, Enums](#types)
+- [Constructors](#constructors)
+- [Fields](#fields)
 - [Methods](#Methods)
-- [Constructor Parameter](#Constructor-Parameter)
-- [Method Parameter](#Method-Parameter)
+- [Constructor Parameter](#constructor-Parameter)
+- [Method Parameter](#method-Parameter)
 
 
 
@@ -288,8 +288,10 @@ Check the <b>value</b> parameter has value <b>test</b> using equality check.
 assertThat(namedInjection, is(methodParameterAnnotatedWithParamValue(Named.class, "value", "test", 1, "namedInjection", String.class, int.class)));
 ```
 
+### Blogs
+* [Zaradai](http://zaradai.blogspot.sg/2014/08/testing-annotations.html)
 
-## Licence
+### Licence
 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
