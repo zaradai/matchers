@@ -11,9 +11,9 @@ The library is used to help unit testing of annotations.  The range of annotatio
 - [Types - Classes, Interfaces, Enums](#types)
 - [Constructors](#constructors)
 - [Fields](#fields)
-- [Methods](#Methods)
-- [Constructor Parameter](#constructor-Parameter)
-- [Method Parameter](#method-Parameter)
+- [Methods](#methods)
+- [Constructor Parameter](#constructor-parameter)
+- [Method Parameter](#method-parameter)
 
 
 
