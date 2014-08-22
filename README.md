@@ -192,6 +192,54 @@ Check the <b>name</b> parameter has value <b>DESC</b> using equality check.
 assertThat(category, is(fieldAnnotatedWithParamValue(Column.class, "name", "DESC", "description")));
 ```
 
+### Method
+
+To identify the method being tested within your class you must specify the simple method name and its argument types in order.
+
+The code to test will be similar to field above but on a no-arg method.
+
+Code to be tested
+
+```java
+@Column(name = "DESC")
+public String getDescription() {
+    return description;
+}
+```
+
+#### AnnotatedWith
+
+Ensure required method is annotated.
+
+```java
+assertThat(category, is(methodAnnotatedWith(Column.class, "getDescription")));
+```
+
+
+#### AnnotatedWithParam
+
+Check for the <b>name</b> parameter.
+
+```java
+assertThat(category, is(methodAnnotatedWithParam(Column.class, "name", "getDescription")));
+```
+
+#### AnnotatedWithParamValue (using value matcher)
+
+Check the <b>name</b> parameter has value <b>DESC</b> using a matcher.
+
+```java
+assertThat(category, is(methodAnnotatedWithParamValue(Column.class, "name", is("DESC"), "getDescription")));
+```
+
+#### AnnotatedWithParamValue (using value equality)
+
+Check the <b>name</b> parameter has value <b>DESC</b> using equality check.
+
+```java
+assertThat(category, is(methodAnnotatedWithParamValue(Column.class, "name", "DESC", "getDescription")));
+```
+
 
 ### Constructor Parameter
 
