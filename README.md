@@ -6,7 +6,7 @@ Hamcrest extended matcher for Annotations
 
 ## Introduction
 
-The library is used to help aid unit testing of annotations.  The range of annotations that can be tested are :-
+The library is used to help unit testing of annotations.  The range of annotations that can be tested are :-
 
 - [Types - Classes, Interfaces, Enums](#Types)
 - [Constructors](#Constructors)
@@ -19,7 +19,7 @@ The library is used to help aid unit testing of annotations.  The range of annot
 
 ## Integration with Maven
 
-To use the official release of Annotation matchers, please use the following snippet in your pom.xml
+To use the official release of Annotation matchers, please add the following snippet to your pom.xml
 
 ```xml
     <dependency>
@@ -31,7 +31,7 @@ To use the official release of Annotation matchers, please use the following sni
 
 ## Usage
 
-The following code snippets describe how to use the matcher library.  Each example will show the code under test and a passing test. For every type there are 4 specific tests that an be run.
+The following examples describe how to use the matcher library.  Each example will show the code under test and a passing test. For every type there are 4 specific tests that can be run.
 
 - <b>AnnotatedWith</b>: <i>Check for annotation existence.</i>
 - <b>AnnotatedWithParam</b>: <i>Check for annotation and that it has the specified parameter.</i>
@@ -197,94 +197,100 @@ assertThat(category, is(fieldAnnotatedWithParamValue(Column.class, "name", "DESC
 
 In addition to specifying the constructor signature using its types (in order), one also needs to indicate the parameter to test using its position.  Positional indexing is 0 based.
 
+The code to be tested will be annotated with javax persistence Named annotation and the constructor signature with be String, int.
 
 Code to be tested
 
 ```java
-
+@Inject
+public NamedInjection(String notNamed, @Named("test") int named) {
+}
 ```
 
 #### AnnotatedWith
 
-Text.
+Ensure required constructor parameter is annotated.
 
 ```java
-
+assertThat(namedInjection, is(constructorParameterAnnotatedWith(Named.class, 1, String.class, int.class)));
 ```
 
 
 #### AnnotatedWithParam
 
-Text.
+Check for the <b>value</b> parameter.
 
 ```java
-
+assertThat(namedInjection, is(constructorParameterAnnotatedWithParam(Named.class, "value", 1, String.class, int.class)));
 ```
 
 #### AnnotatedWithParamValue (using value matcher)
 
-Text.
+Check the <b>value</b> parameter has value <b>test</b> using a matcher.
 
 ```java
-
+assertThat(namedInjection, is(constructorParameterAnnotatedWithParamValue(Named.class, "value", is("test"), 1, String.class, int.class)));
 ```
 
 #### AnnotatedWithParamValue (using value equality)
 
-Text.
+Check the <b>value</b> parameter has value <b>test</b> using equality check.
 
 ```java
-
+assertThat(namedInjection, is(constructorParameterAnnotatedWithParamValue(Named.class, "value", "test", 1, String.class, int.class)));
 ```
 
 
 ### Method-Parameter
 
-In addition to specifying the method's signature using its types (in order), one also needs to indicate the parameter to test using its position.  Positional indexing is 0 based.
+In addition to specifying the method's signature using its types (in order) and method name, one also needs to indicate the parameter to test using its position.  Positional indexing is 0 based.
 
+To make things simple I shall reuse the Named annotation from above to decorate the method parameter.
 
 Code to be tested
 
 ```java
-
+@Inject
+public void namedInjection(String notNamed, @Named("test") int named) {
+}
 ```
 
 #### AnnotatedWith
 
-Text.
+Ensure required method parameter is annotated..
 
 ```java
-
+assertThat(namedInjection, is(methodParameterAnnotatedWith(Named.class, 1, "namedInjection", String.class, int.class)));
 ```
 
 
 #### AnnotatedWithParam
 
-Text.
+Check for the <b>value</b> parameter.
 
 ```java
-
+assertThat(namedInjection, is(methodParameterAnnotatedWithParam(Named.class, "value", 1, "namedInjection", String.class, int.class)));
 ```
 
 #### AnnotatedWithParamValue (using value matcher)
 
-Text.
+Check the <b>value</b> parameter has value <b>test</b> using a matcher.
 
 ```java
-
+assertThat(namedInjection, is(methodParameterAnnotatedWithParamValue(Named.class, "value", is("test"), 1, "namedInjection", String.class, int.class)));
 ```
 
 #### AnnotatedWithParamValue (using value equality)
 
-Text.
+Check the <b>value</b> parameter has value <b>test</b> using equality check.
 
 ```java
-
+assertThat(namedInjection, is(methodParameterAnnotatedWithParamValue(Named.class, "value", "test", 1, "namedInjection", String.class, int.class)));
 ```
 
 
 ## Licence
 
-
+[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 
