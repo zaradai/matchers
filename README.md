@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/zaradai/matchers.svg?branch=master)](https://travis-ci.org/zaradai/matchers)
+[![Coverage Status](https://coveralls.io/repos/zaradai/matchers/badge.png?branch=master)](https://coveralls.io/r/zaradai/matchers?branch=master)
 [![Maven central](https://maven-badges.herokuapp.com/maven-central/com.zaradai/matchers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.zaradai/matchers)
 # Matchers
 
